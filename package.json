@@ -1,0 +1,27 @@
+{
+  "name": "wk8-hw-pokedex",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriancgarcia/wk8-hw-pokedex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriancgarcia/wk8-hw-pokedex/issues"
+  },
+  "homepage": "https://github.com/adriancgarcia/wk8-hw-pokedex#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
