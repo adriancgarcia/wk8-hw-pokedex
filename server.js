@@ -6,13 +6,17 @@ const pokemon = require('./models/pokemon.js');
 
 // INDEX
 app.get('/pokemon', (req, res) => {
-    res.render('index.ejs', { data: pokemon });
+    res.render('index.ejs', {pokemon});
     });
     
     
 // SHOW
 app.get('/pokemon/:id', (req, res) => {
-res.render('show.ejs', { data: pokemon[req.params.id] });
+    const id = req.params.id;
+    const Pokemon = pokemon[id];
+    
+res.render('show.ejs', {Pokemon, id});
+
 });
 
 

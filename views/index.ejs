@@ -8,5 +8,15 @@
 <body>
     <h1>Pokemon</h1>
     
+    
+    
+    
+    <% for(let i = 0; i < pokemon.length; i++) { %>
+
+        <a href="/pokemon/<%= i %>"><%= pokemon[i].name %></a>
+        <a href="/pokemon/<%= i %>"><img src=" <%= pokemon[i].img %>"></a>
+
+        <% } %>
+    
 </body>
 </html>
