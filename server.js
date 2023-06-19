@@ -1,14 +1,19 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const pokemon = require('./models/pokemon.js');
+const methodOverride = require("method-override");
 
 
 // MIDDLEWARE
-
 // PARSING URLENCODED
+app.use(morgan("dev"))
 app.use(express.urlencoded({extended: false}))
+app.use(methodOverride("_method"))  
 
 
+
+// ROUTES
 
 // INDEX
 app.get('/pokemon', (req, res) => {
@@ -25,6 +30,13 @@ app.get('/pokemon/new', (req, res) => {
 
 
 // UPDATE - PUT
+app.put("/pokemon/:id", (req, res) => {
+    const id = req.params.id;
+    pokemon[id] = req.body 
+    res.redirect("/pokemon")
+})
+
+
 
 
 
@@ -35,10 +47,15 @@ app.post('/pokemon', (req, res) => {
     res.redirect('/pokemon')
 })
 
-
-
 // EDIT - GET
-    
+app.get("/pokemon/:id/edit", (req, res) => {
+    const id = req.params.id;
+    const Pokemon = pokemon[id];
+    res.render("edit.ejs", {Pokemon, id});
+}) 
+
+
+
 // SHOW
 app.get('/pokemon/:id', (req, res) => {
     const id = req.params.id;

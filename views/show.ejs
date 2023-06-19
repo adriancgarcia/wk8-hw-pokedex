@@ -9,7 +9,7 @@
     <!-- <h1>Pokemon</h1> -->
 
     <h1><%= Pokemon.name %></h1>
-    <img src="<%= Pokemon.img %>"/>
+    <img src="<%= Pokemon.img %>" alt="pokemon character"/>
 
     <h2>Type:</h2>
     
@@ -27,7 +27,7 @@
         <li><h4>Speed: <%= Pokemon.stats.speed %></h4></li>
     </ul>
 
-    
+    <a href="/pokemon/<%= id %>/edit"><button> Edit the Pokemon</button></a>
 
     <h3>
         <a href="/pokemon/">Return Back To Main Page</a>
