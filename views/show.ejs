@@ -6,16 +6,35 @@
     <title>Pokemon</title>
 </head>
 <body>
-    <h1>Pokemon Show Page</h1>
+    <!-- <h1>Pokemon</h1> -->
 
-    <h2><%= Pokemon.name %></h2>
+    <h1><%= Pokemon.name %></h1>
     <img src="<%= Pokemon.img %>"/>
-    <h4>Type: <%= Pokemon.type %></h4>
-    <h4>Attack: <%= Pokemon.stats.attack %></h4>
-    <h4>Hit Points: <%= Pokemon.stats.hp %></h4>
-    <h4>Defense: <%= Pokemon.stats.defense %></h4>
-    <h4>Speed: <%= Pokemon.stats.speed %></h4>
 
+    <h2>Type:</h2>
+    
+    <ul>        
+        <% for(let i=0; i<Pokemon.type.length; i++) { %>
+            <li><h4><%= Pokemon.type[i] %></h4></li>
+        <% } %>
+    </ul>
+
+    <h2>Stats:</h2>
+        <ul>
+        <li><h4>Attack: <%= Pokemon.stats.attack %></h4></li>
+        <li><h4>Hit Points: <%= Pokemon.stats.hp %></h4></li>
+        <li><h4>Defense: <%= Pokemon.stats.defense %></h4></li>
+        <li><h4>Speed: <%= Pokemon.stats.speed %></h4></li>
+    </ul>
+
+    <h2>moves:</h2> 
+    <% for (let i=0; i < Pokemon.moves.level.length; i++) { %>
+            <h4><%= Pokemon.moves.level[i].name %></h4>
+    <% } %>
+
+    <h3>
+        <a href="/pokemon/">Return Back To Main Page</a>
+    </h3>
 
     
     
