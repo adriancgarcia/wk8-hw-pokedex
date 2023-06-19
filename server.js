@@ -1,9 +1,10 @@
+require("dotenv").config()
 const express = require("express");
 const morgan = require("morgan");
+const PORT = process.env.PORT;
 const app = express();
-const pokemon = require('./models/pokemon.js');
 const methodOverride = require("method-override");
-
+const pokemon = require('./models/pokemon.js');
 
 // MIDDLEWARE
 // PARSING URLENCODED
@@ -12,10 +13,9 @@ app.use(express.urlencoded({extended: false}))
 app.use(methodOverride("_method"))  
 
 
-
 // ROUTES
 
-// INDEX
+// INDEX - GET
 app.get('/pokemon', (req, res) => {
     res.render('index.ejs', {pokemon});
     });
@@ -26,8 +26,11 @@ app.get('/pokemon/new', (req, res) => {
 })
 
 // DESTROY - DELETE
-
-
+app.delete("/pokemon/:id", (req, res) => {
+    const id = req.params.id
+    pokemon.splice(id, 1)
+    res.redirect("/pokemon")
+})
 
 // UPDATE - PUT
 app.put("/pokemon/:id", (req, res) => {
@@ -35,10 +38,6 @@ app.put("/pokemon/:id", (req, res) => {
     pokemon[id] = req.body 
     res.redirect("/pokemon")
 })
-
-
-
-
 
 // CREATE - POST 
 app.post('/pokemon', (req, res) => { 
@@ -54,8 +53,6 @@ app.get("/pokemon/:id/edit", (req, res) => {
     res.render("edit.ejs", {Pokemon, id});
 }) 
 
-
-
 // SHOW
 app.get('/pokemon/:id', (req, res) => {
     const id = req.params.id;
@@ -63,6 +60,6 @@ app.get('/pokemon/:id', (req, res) => {
 res.render('show.ejs', {Pokemon, id});
 });
 
-app.listen(3000, () => {
-    console.log("Listening");
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 })
