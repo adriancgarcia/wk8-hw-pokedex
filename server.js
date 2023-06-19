@@ -9,6 +9,7 @@ const pokemon = require('./models/pokemon.js');
 // MIDDLEWARE
 // PARSING URLENCODED
 app.use(morgan("dev"))
+app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride("_method"))  
 
@@ -58,6 +59,7 @@ app.get('/pokemon/:id', (req, res) => {
     const id = req.params.id;
     const Pokemon = pokemon[id];
 res.render('show.ejs', {Pokemon, id});
+console.log(Pokemon.damages)
 });
 
 app.listen(PORT, () => {

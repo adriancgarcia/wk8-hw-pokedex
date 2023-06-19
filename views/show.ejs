@@ -3,48 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon</title>
+    <title>Pokedex</title>
+    <%- include("./imports.ejs") %>
+    
 </head>
 <body>
-    <!-- <h1>Pokemon</h1> -->
+    <container class="seePokemon">
+        <!-- <h1>Pokemon</h1> -->
+        <h1><%= Pokemon.name %></h1>
+        <img src="<%= Pokemon.img %>" alt="pokemon character"/>
+       
+        <h2>Type:</h2>
+        <ul>        
+            <% for(let i=0; i<Pokemon.type.length; i++) { %>
+                <li><h4><%= Pokemon.type[i] %></h4></li>
+            <% } %>
+        </ul>
 
-    <h1><%= Pokemon.name %></h1>
-    <img src="<%= Pokemon.img %>" alt="pokemon character"/>
+        <h2>Stats:</h2>
+            <ul>
+            <li><h4>Attack: <%= Pokemon.stats.attack %></h4></li>
+            <li><h4>Hit Points: <%= Pokemon.stats.hp %></h4></li>
+            <li><h4>Defense: <%= Pokemon.stats.defense %></h4></li>
+            <li><h4>Speed: <%= Pokemon.stats.speed %></h4></li>
+        </ul>
 
-    <h2>Type:</h2>
-    
-    <ul>        
-        <% for(let i=0; i<Pokemon.type.length; i++) { %>
-            <li><h4><%= Pokemon.type[i] %></h4></li>
-        <% } %>
-    </ul>
+        <!-- <h2>moves:</h2> 
+        <% for (let i=0; i < Pokemon.moves.level.length; i++) { %>
+                <h4><%= Pokemon.moves.level[i].name %></h4>
+        <% } %> -->
 
-    <h2>Stats:</h2>
-        <ul>
-        <li><h4>Attack: <%= Pokemon.stats.attack %></h4></li>
-        <li><h4>Hit Points: <%= Pokemon.stats.hp %></h4></li>
-        <li><h4>Defense: <%= Pokemon.stats.defense %></h4></li>
-        <li><h4>Speed: <%= Pokemon.stats.speed %></h4></li>
-    </ul>
+        <h2>Damages:</h2> 
+            <ul>
+                <li><h4>Normal: <%= Pokemon.damages.normal %></h4></li>
+                <li><h4>Fire: <%= Pokemon.damages.fire %></h4></li>  
+                <li><h4>Water: <%= Pokemon.damages.water %></h4></li> 
+                <li><h4>Ice: <%= Pokemon.damages.ice %></h4></li> 
+            </ul>
+        
+        <a href="/pokemon/<%= id %>/edit"><button> Edit the Pokemon</button></a>
 
-    <a href="/pokemon/<%= id %>/edit"><button> Edit the Pokemon</button></a>
+        <form action="/pokemon/<%= id %>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE"/>
+        </form>
 
-    <form action="/pokemon/<%= id %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE"/>
-    </form>
-
-   
-
-    <h3>
-        <a href="/pokemon/">Return Back To Main Page</a>
-    </h3>
-
-    
-    
-    
-
-
-
-    
+        <h3>
+            <a href="/pokemon/">Return Back To Main Page</a>
+        </h3>
+    </container> 
 </body>
 </html>
