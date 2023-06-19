@@ -1,7 +1,13 @@
 const express = require("express");
 const app = express();
-
 const pokemon = require('./models/pokemon.js');
+
+
+// MIDDLEWARE
+
+// PARSING URLENCODED
+app.use(express.urlencoded({extended: false}))
+
 
 
 // INDEX
@@ -11,17 +17,27 @@ app.get('/pokemon', (req, res) => {
     
 // NEW - GET 
 app.get('/pokemon/new', (req, res) => {
-    res.render('pokemon/new.ejs')
+    res.render('./new.ejs')
 })
+
+// DESTROY - DELETE
+
+
+
+// UPDATE - PUT
+
 
 
 // CREATE - POST 
-// get.post('/', (req, res) => {
+app.post('/pokemon', (req, res) => { 
+    pokemon.push(req.body)
 // pokemon.create(req.body).then(()=> {
-//     res.redirect('/pokemon')
-//     })
-// })
+    res.redirect('/pokemon')
+})
 
+
+
+// EDIT - GET
     
 // SHOW
 app.get('/pokemon/:id', (req, res) => {
