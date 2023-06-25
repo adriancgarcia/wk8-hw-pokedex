@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const PORT = process.env.PORT;
 const app = express();
 const methodOverride = require("method-override");
-const pokemon = require('./models/pokemon.js');
+const pokemon = require("./models/pokemon.js");
 
 // MIDDLEWARE
 // PARSING URLENCODED
@@ -13,13 +13,14 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride("_method"))  
 
-
 // ROUTES
 
 // INDEX - GET
 app.get('/pokemon', (req, res) => {
-    res.render('index.ejs', {pokemon});
-    });
+    console.log(pokemon)
+        res.render('index.ejs', {pokemon});
+
+    })
     
 // NEW - GET 
 app.get('/pokemon/new', (req, res) => {
@@ -36,14 +37,53 @@ app.delete("/pokemon/:id", (req, res) => {
 // UPDATE - PUT
 app.put("/pokemon/:id", (req, res) => {
     const id = req.params.id;
-    pokemon[id] = req.body 
+    pokemon[id] = { 
+        name: req.body.name,
+        img: req.body.image,
+        type: [
+            req.body.type
+        ],
+        stats: {
+            attack: req.body.attack,
+            hp: req.body.hp,
+            defense: req.body.defense,
+            speed: req.body.speed
+        },
+        damages: {
+            normal: req.body.normal,
+            fire: req.body.fire,
+            water: req.body.water,
+            ice: req.body.ice
+        }
+    }
     res.redirect("/pokemon")
 })
 
 // CREATE - POST 
-app.post('/pokemon', (req, res) => { 
-    pokemon.push(req.body)
+app.post('/pokemon/', (req, res) => { 
+    let newPokemon = {
+        name: req.body.name,
+        img: req.body.image,
+        type: [
+            req.body.type
+        ],
+        stats: {
+            attack: req.body.attack,
+            hp: req.body.hp,
+            defense: req.body.defense,
+            speed: req.body.speed
+        },
+        damages: {
+            normal: req.body.normal,
+            fire: req.body.fire,
+            water: req.body.water,
+            ice: req.body.ice
+        }
+    }
+    // pokemon.push(req.body)
 // pokemon.create(req.body).then(()=> {
+    pokemon.push(newPokemon)
+
     res.redirect('/pokemon')
 })
 
@@ -58,9 +98,15 @@ app.get("/pokemon/:id/edit", (req, res) => {
 app.get('/pokemon/:id', (req, res) => {
     const id = req.params.id;
     const Pokemon = pokemon[id];
-res.render('show.ejs', {Pokemon, id});
-console.log(Pokemon.damages)
+    res.render('show.ejs', {Pokemon, id});
+    // console.log(Pokemon).damages
+// console.log(pokemon.damages)
 });
+
+
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

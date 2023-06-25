@@ -1,10 +1,8 @@
 body {
-    background-color: #B3A125;
+    background-color: #CC0000;
     /* background-image: url("yellow_diagonal_geometric_striped_background_with_halftone_detailed.jpg"); */
     display: flex;
 }
-
-
 
 .seePokemon {
     display: flex;
@@ -16,17 +14,18 @@ body {
     margin: auto;
     width: 1200px;
     height: 100%;
-    background-color: #3B4CCA;
+    background-color: #FFDE00;
     align-items: center;
-    border:5px solid #FFDE00;
-
+    border:5px solid #B3A125;
 }
+
 .seePokemon a{
-    color: rgb(241, 239, 228);
+    /* color: rgb(241, 239, 228); */
+    color: black;
     text-decoration: none;
 }
 
-h1 {
+.pageTitle h1 {
     font-size: 4.5rem;
     color:#CC0000;
 }
@@ -51,8 +50,8 @@ h1 {
 .pokeChar a img {
     height: auto;
     width: 200px;
-    border: 3px solid #CC0000;
-    border-radius: 8px;
+    border: 5px solid #3B4CCA;
+    border-radius: 5px;
     box-shadow: 8px 8px rgb(23, 22, 22);
 }
 
@@ -69,5 +68,98 @@ h1 {
     font-size: 1.5rem; 
 }
 
-/* show page styling */
 
+
+/* show page styling */
+.showPage {
+    background-color: #FFDE00;
+}
+
+.seePokeDetails {
+    background-color: #3B4CCA;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 40px;
+    text-align: center;
+    justify-content: space-around;
+    margin: auto;
+    width: 1200px;
+    height: 100%;
+    align-items: center;
+    border:5px solid #B3A125;
+}
+
+.pokemonDetails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* margin: 40px; */
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.showPokemon h1{
+    color:rgb(241, 239, 228);
+    
+}
+
+.pokemonDetails h4{
+    color:rgb(241, 239, 228);
+}
+
+.pokemonDetails h2{
+    color:rgb(241, 239, 228);
+}
+
+.pokemonDetails li {
+    list-style-type: none;
+}
+
+.showImage img {
+    border: 5px solid #CC0000;
+    border-radius: 8px;
+    box-shadow: 8px 8px rgb(23, 22, 22);
+}
+
+.stats h2{
+    color:rgb(241, 239, 228);
+}
+
+.stats h4{
+    color:rgb(241, 239, 228);
+}
+
+.stats li{
+    list-style-type: none;
+}
+
+.damages h2{
+    color:rgb(241, 239, 228);
+}
+
+.damages h4{
+    color:rgb(241, 239, 228);
+}
+
+.damages li {
+    list-style-type: none;
+}
+
+.damages li{
+    color:rgb(241, 239, 228);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.controls a {
+    color:rgb(241, 239, 228);
+    text-decoration: none;
+}

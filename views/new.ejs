@@ -7,15 +7,30 @@
     <%- include("./imports.ejs") %>
 </head>
 <body>
-    <h1>Pokedex</h1>
 
     <h2>Add a New Pokemon</h2>
+    <ul>
         <form action="/pokemon" method="post">
-            <input type="text" name="name" placeholder="name of Pokemon"/>
-            <input type="text" name="type" placeholder="type of Pokemon"/>
-            <input type="text" name="stats" placeholder="Pokemon stats"/>
-            <input type="text" name="moves" placeholder="Pokemon moves"/>
+            
+            <h4>Name: <input type="text" name="name"placeholder="name of Pokemon"></h4>
+            <h4>Type: <input type="text" name="type" placeholder="type of Pokemon"></h4> 
+            <h4>Add Image: <input type="url" accept="image/*"></h4>
+
+            <h2>Stats:</h2> 
+            <h4>Attack: <input type="text" name="attack"></h4>
+            <h4>HP: <input type="text" name="hp"></h4>
+            <h4>Defense: <input type="text" name="defense"></h4>
+            <h4>Speed: <input type="text" name="speed"></h4>
+
+            <h2>Damages:</h2> 
+            <h4>Normal: <input type="text" name="normal"></h4>
+            <h4>Fire: <input type="text" name="fire"></h4>
+            <h4>Water: <input type="text" name="water"></h4>
+            <h4>Ice: <input type="text" name="ice"></h4>
+
+
             <input type="submit" value="Add Pokemon" />
         </form>
+    </ul>
 </body>
 </html>
